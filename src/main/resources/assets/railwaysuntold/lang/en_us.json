@@ -1,0 +1,61 @@
+{
+  "itemGroup.railwaysuntold": "Railways Untold",
+  "entity.railwaysuntold.starting_train": "Starting Train",
+  "block.railwaysuntold.dead_end": "Dead End",
+  "block.railwaysuntold.start": "Start",
+
+  "railwaysuntold.configuration.title": "%s Configuration",
+
+  "railwaysuntold.configuration.section.railways.untold.config.toml": "Railways Untold Config",
+
+  "railwaysuntold.configuration.track_clearing": "Track Clearing",
+  "railwaysuntold.configuration.horizontalExpansion": "Horizontal Expansion",
+  "railwaysuntold.configuration.verticalExpansion": "Vertical Expansion",
+
+  "railwaysuntold.configuration.world_generation": "World Generation",
+  "railwaysuntold.configuration.generateInWorldTypes": "Generate in World Types",
+
+  "railwaysuntold.configuration.features": "Features",
+  "railwaysuntold.configuration.startingTrain": "Starting Train",
+  "railwaysuntold.configuration.branchesEnabled": "Branches Enabled",
+  "railwaysuntold.configuration.recursiveBranchingEnabled": "Recursive Branching",
+  "railwaysuntold.configuration.maxBranchDepth": "Max Branch Depth",
+  "railwaysuntold.configuration.maxActiveHeads": "Max Active Heads",
+  "railwaysuntold.configuration.minBranchSpacing": "Min Branch Spacing",
+  "railwaysuntold.configuration.structureTargeting": "Structure Targeting",
+  "railwaysuntold.configuration.allAvoidance": "Obstacle Avoidance",
+  "railwaysuntold.configuration.sideBySideTracks": "Side-by-Side Tracks",
+  "railwaysuntold.configuration.sidingsEnabled": "Sidings Enabled",
+  "railwaysuntold.configuration.sidingMinStraightSegments": "Siding Min Straight Segments",
+  "railwaysuntold.configuration.gauge": "Gauge",
+
+  "railwaysuntold.configuration.pillars": "Bridges",
+  "railwaysuntold.configuration.bridgePillarInterval": "Bridge Pillar Interval",
+  "railwaysuntold.configuration.bridgeElevationThreshold": "Bridge Elevation Threshold",
+
+  "railwaysuntold.configuration.terrain": "Terrain Detection",
+  "railwaysuntold.configuration.cliffThreshold": "Cliff Threshold",
+  "railwaysuntold.configuration.terrainCurveAvoidance": "Terrain Curve Avoidance",
+  "railwaysuntold.configuration.bankingCurves": "Banking Curves",
+  "railwaysuntold.configuration.laterals": "Lateral Shifts",
+  "railwaysuntold.configuration.lateralOffset": "Lateral Offset",
+  "railwaysuntold.configuration.slopeRise": "Slope Rise",
+  "railwaysuntold.configuration.slopeRun": "Slope Run",
+  "railwaysuntold.configuration.minCurveRadius": "Min Curve Radius",
+  "railwaysuntold.configuration.maxCurveRadius": "Max Curve Radius",
+  "railwaysuntold.configuration.bridgeWaterDistance": "Bridge Water Distance",
+
+  "railwaysuntold.configuration.tunnels": "Tunnels",
+  "railwaysuntold.configuration.lightSpacing": "Light Spacing",
+
+  "railwaysuntold.configuration.debug": "Debug",
+  "railwaysuntold.configuration.verboseLogging": "Verbose Logging",
+
+  "railwaysuntold.configuration.station_train": "Station & Train",
+  "railwaysuntold.configuration.stationAtStart": "Station at Start",
+
+  "railwaysuntold.configuration.events": "Events",
+  "railwaysuntold.configuration.customEvents": "Custom Events",
+  "railwaysuntold.configuration.eventSeparationMinDistance": "Event Min Distance",
+  "railwaysuntold.configuration.eventChance": "Event Chance"
+}

@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "package": "com.vodmordia.railwaysuntold.mixin.compat.copycats",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "mixins": [
+    "BlockEntityValidationMixin",
+    "MigrationManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

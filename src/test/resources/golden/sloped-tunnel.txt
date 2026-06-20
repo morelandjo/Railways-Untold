@@ -1,0 +1,16 @@
+== COARSE WAYPOINTS (9) ==
+WP[0] (0,84,0) advisedY=84 type=TUNNEL
+WP[1] (8,83,0) advisedY=83 type=TUNNEL
+WP[2] (16,82,0) advisedY=82 type=TUNNEL
+WP[3] (24,81,0) advisedY=81 type=TUNNEL
+WP[4] (32,80,0) advisedY=80 type=TUNNEL
+WP[5] (40,79,0) advisedY=79 type=TUNNEL
+WP[6] (48,78,0) advisedY=78 type=TUNNEL
+WP[7] (56,77,0) advisedY=77 type=TUNNEL
+WP[8] (64,76,0) advisedY=76 type=TUNNEL
+== PLANNED PATH ==
+valid=true finalPos=(64,76,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (1) ==
+SEG[0] TunnelSegment type=ELEVATED_TUNNEL start=(0,84,0) startDir=EAST end=(64,76,0) endDir=EAST | ElevatedTunnel[BlockPos{x=0, y=84, z=0} -> BlockPos{x=64, y=76, z=0}, elevation=-8]
+== SELECTED ALTERNATIVE ==
+none

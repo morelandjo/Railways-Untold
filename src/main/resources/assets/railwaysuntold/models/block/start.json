@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "up": "railwaysuntold:block/start_top",
+    "down": "railwaysuntold:block/start_side",
+    "north": "railwaysuntold:block/start_side",
+    "south": "railwaysuntold:block/start_side",
+    "east": "railwaysuntold:block/start_side",
+    "west": "railwaysuntold:block/start_side",
+    "particle": "railwaysuntold:block/start_side"
+  }
+}

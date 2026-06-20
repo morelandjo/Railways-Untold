@@ -1,0 +1,14 @@
+== COARSE WAYPOINTS (6) ==
+WP[0] (-3865,65,2388) advisedY=68 type=BRIDGE
+WP[1] (-3873,50,2388) advisedY=68 type=BRIDGE
+WP[2] (-3882,65,2388) advisedY=68 type=BRIDGE
+WP[3] (-3895,67,2388) advisedY=68 type=BRIDGE
+WP[4] (-3901,67,2382) advisedY=67 type=TERRAIN_FOLLOW
+WP[5] (-3907,67,2376) advisedY=67 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(-3907,67,2388) finalDir=WEST invalidCode=null invalidReason=null
+== PATH SEGMENTS (2) ==
+SEG[0] BridgeSegment type=BRIDGE start=(-3865,65,2388) startDir=WEST end=(-3895,68,2388) endDir=WEST | Bridge[BlockPos{x=-3865, y=65, z=2388} -> BlockPos{x=-3895, y=68, z=2388}, elevation=+3]
+SEG[1] BezierSegment type=BEZIER start=(-3895,68,2388) startDir=WEST end=(-3907,67,2388) endDir=WEST | Bezier[BlockPos{x=-3895, y=68, z=2388} -> BlockPos{x=-3907, y=67, z=2388}, elevation=-1]
+== SELECTED ALTERNATIVE ==
+none

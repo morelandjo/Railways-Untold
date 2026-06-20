@@ -1,0 +1,75 @@
+== COARSE WAYPOINTS (65) ==
+WP[0] (0,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[1] (4,73,0) advisedY=73 type=FLAT_MAINTAIN
+WP[2] (8,74,0) advisedY=74 type=TERRAIN_FOLLOW
+WP[3] (12,75,0) advisedY=75 type=FLAT_MAINTAIN
+WP[4] (16,76,0) advisedY=76 type=TERRAIN_FOLLOW
+WP[5] (20,77,0) advisedY=77 type=FLAT_MAINTAIN
+WP[6] (24,78,0) advisedY=78 type=TERRAIN_FOLLOW
+WP[7] (28,79,0) advisedY=79 type=FLAT_MAINTAIN
+WP[8] (32,80,0) advisedY=80 type=TERRAIN_FOLLOW
+WP[9] (36,81,0) advisedY=81 type=FLAT_MAINTAIN
+WP[10] (40,82,0) advisedY=82 type=TERRAIN_FOLLOW
+WP[11] (44,83,0) advisedY=83 type=FLAT_MAINTAIN
+WP[12] (48,84,0) advisedY=84 type=TERRAIN_FOLLOW
+WP[13] (52,85,0) advisedY=85 type=FLAT_MAINTAIN
+WP[14] (56,86,0) advisedY=86 type=TERRAIN_FOLLOW
+WP[15] (60,87,0) advisedY=87 type=FLAT_MAINTAIN
+WP[16] (64,88,0) advisedY=88 type=TERRAIN_FOLLOW
+WP[17] (68,89,0) advisedY=89 type=FLAT_MAINTAIN
+WP[18] (72,90,0) advisedY=90 type=TERRAIN_FOLLOW
+WP[19] (76,91,0) advisedY=91 type=FLAT_MAINTAIN
+WP[20] (80,92,0) advisedY=92 type=TERRAIN_FOLLOW
+WP[21] (84,93,0) advisedY=93 type=FLAT_MAINTAIN
+WP[22] (88,94,0) advisedY=94 type=TERRAIN_FOLLOW
+WP[23] (92,95,0) advisedY=95 type=FLAT_MAINTAIN
+WP[24] (96,96,0) advisedY=96 type=TERRAIN_FOLLOW
+WP[25] (100,97,0) advisedY=97 type=FLAT_MAINTAIN
+WP[26] (104,98,0) advisedY=98 type=TERRAIN_FOLLOW
+WP[27] (108,99,0) advisedY=99 type=FLAT_MAINTAIN
+WP[28] (112,100,0) advisedY=100 type=TERRAIN_FOLLOW
+WP[29] (116,101,0) advisedY=101 type=FLAT_MAINTAIN
+WP[30] (120,102,0) advisedY=102 type=TERRAIN_FOLLOW
+WP[31] (124,103,0) advisedY=103 type=FLAT_MAINTAIN
+WP[32] (128,104,0) advisedY=104 type=TERRAIN_FOLLOW
+WP[33] (132,105,0) advisedY=105 type=FLAT_MAINTAIN
+WP[34] (136,106,0) advisedY=106 type=TERRAIN_FOLLOW
+WP[35] (140,107,0) advisedY=107 type=FLAT_MAINTAIN
+WP[36] (144,108,0) advisedY=108 type=TERRAIN_FOLLOW
+WP[37] (148,109,0) advisedY=109 type=FLAT_MAINTAIN
+WP[38] (152,110,0) advisedY=110 type=TERRAIN_FOLLOW
+WP[39] (156,111,0) advisedY=111 type=FLAT_MAINTAIN
+WP[40] (160,112,0) advisedY=112 type=TERRAIN_FOLLOW
+WP[41] (164,113,0) advisedY=113 type=FLAT_MAINTAIN
+WP[42] (168,114,0) advisedY=114 type=TERRAIN_FOLLOW
+WP[43] (172,115,0) advisedY=115 type=FLAT_MAINTAIN
+WP[44] (176,116,0) advisedY=116 type=TERRAIN_FOLLOW
+WP[45] (180,117,0) advisedY=117 type=FLAT_MAINTAIN
+WP[46] (184,118,0) advisedY=118 type=TERRAIN_FOLLOW
+WP[47] (188,119,0) advisedY=119 type=FLAT_MAINTAIN
+WP[48] (192,120,0) advisedY=120 type=TERRAIN_FOLLOW
+WP[49] (196,121,0) advisedY=121 type=FLAT_MAINTAIN
+WP[50] (200,122,0) advisedY=122 type=TERRAIN_FOLLOW
+WP[51] (204,123,0) advisedY=123 type=FLAT_MAINTAIN
+WP[52] (208,124,0) advisedY=124 type=TERRAIN_FOLLOW
+WP[53] (212,125,0) advisedY=125 type=FLAT_MAINTAIN
+WP[54] (216,126,0) advisedY=126 type=TERRAIN_FOLLOW
+WP[55] (220,127,0) advisedY=127 type=FLAT_MAINTAIN
+WP[56] (224,128,0) advisedY=128 type=TERRAIN_FOLLOW
+WP[57] (228,129,0) advisedY=129 type=FLAT_MAINTAIN
+WP[58] (232,130,0) advisedY=130 type=TERRAIN_FOLLOW
+WP[59] (236,131,0) advisedY=131 type=FLAT_MAINTAIN
+WP[60] (240,132,0) advisedY=132 type=TERRAIN_FOLLOW
+WP[61] (244,133,0) advisedY=133 type=FLAT_MAINTAIN
+WP[62] (248,134,0) advisedY=134 type=TERRAIN_FOLLOW
+WP[63] (252,135,0) advisedY=135 type=FLAT_MAINTAIN
+WP[64] (256,136,0) advisedY=136 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(256,132,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (4) ==
+SEG[0] BezierSegment type=BEZIER start=(0,72,0) startDir=EAST end=(64,87,0) endDir=EAST | Bezier[BlockPos{x=0, y=72, z=0} -> BlockPos{x=64, y=87, z=0}, elevation=+15]
+SEG[1] BezierSegment type=BEZIER start=(64,87,0) startDir=EAST end=(128,102,0) endDir=EAST | Bezier[BlockPos{x=64, y=87, z=0} -> BlockPos{x=128, y=102, z=0}, elevation=+15]
+SEG[2] BezierSegment type=BEZIER start=(128,102,0) startDir=EAST end=(192,117,0) endDir=EAST | Bezier[BlockPos{x=128, y=102, z=0} -> BlockPos{x=192, y=117, z=0}, elevation=+15]
+SEG[3] BezierSegment type=BEZIER start=(192,117,0) startDir=EAST end=(256,132,0) endDir=EAST | Bezier[BlockPos{x=192, y=117, z=0} -> BlockPos{x=256, y=132, z=0}, elevation=+15]
+== SELECTED ALTERNATIVE ==
+none

@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.vodmordia.railwaysuntold.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [],
+  "mixins": [
+    "CarriageContraptionEntityMixin",
+    "GameTestTerrainMixin",
+    "TrackGraphMixin",
+    "TrackPropagatorMixin",
+    "TrainMigrationMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

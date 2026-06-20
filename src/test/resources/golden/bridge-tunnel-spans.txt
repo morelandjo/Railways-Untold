@@ -1,0 +1,16 @@
+== BRIDGE bridge over dip, rims 80/90 ==
+  y=80 type=TERRAIN_FOLLOW
+  y=80 type=BRIDGE
+  y=83 type=BRIDGE
+  y=85 type=BRIDGE
+  y=88 type=BRIDGE
+  y=90 type=BRIDGE
+  y=90 type=TERRAIN_FOLLOW
+== TUNNEL tunnel through peak, portals 70/55 ==
+  y=70 type=TERRAIN_FOLLOW
+  y=70 type=TUNNEL
+  y=66 type=TUNNEL
+  y=63 type=TUNNEL
+  y=59 type=TUNNEL
+  y=55 type=TUNNEL
+  y=55 type=TERRAIN_FOLLOW

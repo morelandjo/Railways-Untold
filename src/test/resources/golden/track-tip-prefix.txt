@@ -1,0 +1,47 @@
+== COARSE WAYPOINTS (36) ==
+WP[0] (0,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[1] (9,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[2] (17,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[3] (25,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[4] (34,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[5] (42,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[6] (50,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[7] (59,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[8] (67,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[9] (76,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[10] (84,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[11] (92,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[12] (101,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[13] (109,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[14] (117,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[15] (126,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[16] (134,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[17] (143,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[18] (151,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[19] (159,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[20] (168,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[21] (175,72,3) advisedY=72 type=TERRAIN_FOLLOW
+WP[22] (181,72,7) advisedY=72 type=TERRAIN_FOLLOW
+WP[23] (187,72,11) advisedY=72 type=TERRAIN_FOLLOW
+WP[24] (193,72,17) advisedY=72 type=TERRAIN_FOLLOW
+WP[25] (199,72,23) advisedY=72 type=TERRAIN_FOLLOW
+WP[26] (205,72,29) advisedY=72 type=TERRAIN_FOLLOW
+WP[27] (210,72,34) advisedY=72 type=TERRAIN_FOLLOW
+WP[28] (216,72,40) advisedY=72 type=TERRAIN_FOLLOW
+WP[29] (222,72,46) advisedY=72 type=TERRAIN_FOLLOW
+WP[30] (227,72,51) advisedY=72 type=TERRAIN_FOLLOW
+WP[31] (233,72,57) advisedY=72 type=TERRAIN_FOLLOW
+WP[32] (239,72,63) advisedY=72 type=TERRAIN_FOLLOW
+WP[33] (245,72,69) advisedY=72 type=TERRAIN_FOLLOW
+WP[34] (250,72,74) advisedY=72 type=TERRAIN_FOLLOW
+WP[35] (256,72,80) advisedY=72 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(256,72,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (5) ==
+SEG[0] BezierSegment type=BEZIER start=(0,72,0) startDir=EAST end=(59,72,0) endDir=EAST | Bezier[BlockPos{x=0, y=72, z=0} -> BlockPos{x=59, y=72, z=0}, elevation=+0]
+SEG[1] BezierSegment type=BEZIER start=(59,72,0) startDir=EAST end=(117,72,0) endDir=EAST | Bezier[BlockPos{x=59, y=72, z=0} -> BlockPos{x=117, y=72, z=0}, elevation=+0]
+SEG[2] BezierSegment type=BEZIER start=(117,72,0) startDir=EAST end=(168,72,0) endDir=EAST | Bezier[BlockPos{x=117, y=72, z=0} -> BlockPos{x=168, y=72, z=0}, elevation=+0]
+SEG[3] BezierSegment type=BEZIER start=(168,72,0) startDir=EAST end=(222,72,0) endDir=EAST | Bezier[BlockPos{x=168, y=72, z=0} -> BlockPos{x=222, y=72, z=0}, elevation=+0]
+SEG[4] BezierSegment type=BEZIER start=(222,72,0) startDir=EAST end=(256,72,0) endDir=EAST | Bezier[BlockPos{x=222, y=72, z=0} -> BlockPos{x=256, y=72, z=0}, elevation=+0]
+== SELECTED ALTERNATIVE ==
+none

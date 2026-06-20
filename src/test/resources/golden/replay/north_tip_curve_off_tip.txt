@@ -1,0 +1,20 @@
+== COARSE WAYPOINTS (11) ==
+WP[0] (1838,64,-40) advisedY=64 type=TERRAIN_FOLLOW
+WP[1] (1838,65,-48) advisedY=65 type=TERRAIN_FOLLOW
+WP[2] (1842,65,-52) advisedY=65 type=TERRAIN_FOLLOW
+WP[3] (1850,65,-55) advisedY=65 type=TERRAIN_FOLLOW
+WP[4] (1855,65,-57) advisedY=65 type=FLAT_MAINTAIN
+WP[5] (1859,65,-55) advisedY=65 type=TERRAIN_FOLLOW
+WP[6] (1864,67,-53) advisedY=67 type=FLAT_MAINTAIN
+WP[7] (1867,63,-50) advisedY=68 type=BRIDGE
+WP[8] (1873,63,-44) advisedY=68 type=BRIDGE
+WP[9] (1882,62,-44) advisedY=68 type=BRIDGE
+WP[10] (1890,62,-44) advisedY=68 type=BRIDGE
+== PLANNED PATH ==
+valid=true finalPos=(1889,66,-42) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (3) ==
+SEG[0] CurveSegment type=CURVE start=(1838,64,-40) startDir=NORTH end=(1853,64,-55) endDir=EAST | Curve[BlockPos{x=1838, y=64, z=-40} -> BlockPos{x=1853, y=64, z=-55}, r=15, RIGHT]
+SEG[1] BezierSegment type=BEZIER start=(1853,64,-55) startDir=EAST end=(1864,66,-55) endDir=EAST | Bezier[BlockPos{x=1853, y=64, z=-55} -> BlockPos{x=1864, y=66, z=-55}, elevation=+2]
+SEG[2] SCurve45Segment type=SCURVE_45 start=(1864,66,-55) startDir=EAST end=(1889,66,-42) endDir=EAST | SCurve45[BlockPos{x=1864, y=66, z=-55} -> BlockPos{x=1889, y=66, z=-42}, r=15, diag=4, RIGHT, elev=0]
+== SELECTED ALTERNATIVE ==
+none

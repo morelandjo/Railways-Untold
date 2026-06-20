@@ -1,0 +1,44 @@
+== COARSE WAYPOINTS (33) ==
+WP[0] (0,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[1] (8,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[2] (16,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[3] (24,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[4] (32,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[5] (40,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[6] (48,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[7] (56,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[8] (64,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[9] (72,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[10] (80,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[11] (88,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[12] (96,72,0) advisedY=72 type=TUNNEL
+WP[13] (104,110,0) advisedY=72 type=TUNNEL
+WP[14] (112,110,0) advisedY=72 type=TUNNEL
+WP[15] (120,110,0) advisedY=72 type=TUNNEL
+WP[16] (128,110,0) advisedY=72 type=TUNNEL
+WP[17] (136,110,0) advisedY=72 type=TUNNEL
+WP[18] (144,110,0) advisedY=72 type=TUNNEL
+WP[19] (152,110,0) advisedY=72 type=TUNNEL
+WP[20] (160,72,0) advisedY=72 type=TUNNEL
+WP[21] (168,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[22] (176,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[23] (184,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[24] (192,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[25] (200,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[26] (208,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[27] (216,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[28] (224,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[29] (232,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[30] (240,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[31] (248,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[32] (256,72,0) advisedY=72 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(256,72,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (5) ==
+SEG[0] BezierSegment type=BEZIER start=(0,72,0) startDir=EAST end=(64,72,0) endDir=EAST | Bezier[BlockPos{x=0, y=72, z=0} -> BlockPos{x=64, y=72, z=0}, elevation=+0]
+SEG[1] BezierSegment type=BEZIER start=(64,72,0) startDir=EAST end=(88,72,0) endDir=EAST | Bezier[BlockPos{x=64, y=72, z=0} -> BlockPos{x=88, y=72, z=0}, elevation=+0]
+SEG[2] TunnelSegment type=TUNNEL start=(88,72,0) startDir=EAST end=(160,72,0) endDir=EAST | Tunnel[BlockPos{x=88, y=72, z=0} -> BlockPos{x=160, y=72, z=0}, length=72]
+SEG[3] BezierSegment type=BEZIER start=(160,72,0) startDir=EAST end=(232,72,0) endDir=EAST | Bezier[BlockPos{x=160, y=72, z=0} -> BlockPos{x=232, y=72, z=0}, elevation=+0]
+SEG[4] BezierSegment type=BEZIER start=(232,72,0) startDir=EAST end=(256,72,0) endDir=EAST | Bezier[BlockPos{x=232, y=72, z=0} -> BlockPos{x=256, y=72, z=0}, elevation=+0]
+== SELECTED ALTERNATIVE ==
+none

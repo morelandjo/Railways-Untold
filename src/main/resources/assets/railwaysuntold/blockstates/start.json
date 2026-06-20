@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "railwaysuntold:block/start" },
+    "facing=south": { "model": "railwaysuntold:block/start", "y": 180 },
+    "facing=east": { "model": "railwaysuntold:block/start", "y": 90 },
+    "facing=west": { "model": "railwaysuntold:block/start", "y": 270 }
+  }
+}

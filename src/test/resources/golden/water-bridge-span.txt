@@ -1,0 +1,13 @@
+== WATER river crossing ==
+  y=72 type=TERRAIN_FOLLOW
+  y=72 type=TERRAIN_FOLLOW
+  y=72 type=TERRAIN_FOLLOW
+  y=72 type=BRIDGE
+  y=72 type=BRIDGE
+  y=68 type=BRIDGE
+  y=68 type=BRIDGE
+  y=68 type=BRIDGE
+  y=72 type=BRIDGE
+  y=72 type=BRIDGE
+  y=72 type=TERRAIN_FOLLOW
+  y=72 type=TERRAIN_FOLLOW

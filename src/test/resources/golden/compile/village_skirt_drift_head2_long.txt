@@ -1,0 +1,20 @@
+== PLANNED PATH ==
+valid=true finalPos=(-2030,72,-47) finalDir=WEST invalidCode=null invalidReason=null
+== PATH SEGMENTS (17) ==
+SEG[0] BridgeSegment type=BRIDGE start=(-1532,79,200) startDir=WEST end=(-1591,82,200) endDir=WEST | Bridge[BlockPos{x=-1532, y=79, z=200} -> BlockPos{x=-1591, y=82, z=200}, elevation=+3]
+SEG[1] BridgeSegment type=BRIDGE start=(-1591,82,200) startDir=WEST end=(-1649,85,200) endDir=WEST | Bridge[BlockPos{x=-1591, y=82, z=200} -> BlockPos{x=-1649, y=85, z=200}, elevation=+3]
+SEG[2] BridgeSegment type=BRIDGE start=(-1649,85,200) startDir=WEST end=(-1657,85,200) endDir=WEST | Bridge[BlockPos{x=-1649, y=85, z=200} -> BlockPos{x=-1657, y=85, z=200}, elevation=+0]
+SEG[3] BezierSegment type=BEZIER start=(-1657,85,200) startDir=WEST end=(-1664,84,200) endDir=WEST | Bezier[BlockPos{x=-1657, y=85, z=200} -> BlockPos{x=-1664, y=84, z=200}, elevation=-1]
+SEG[4] TunnelSegment type=ELEVATED_TUNNEL start=(-1664,84,200) startDir=WEST end=(-1691,82,200) endDir=WEST | ElevatedTunnel[BlockPos{x=-1664, y=84, z=200} -> BlockPos{x=-1691, y=82, z=200}, elevation=-2]
+SEG[5] DiagonalCurveSegment type=DIAGONAL_ENTRY start=(-1691,82,200) startDir=WEST end=(-1702,82,195) endDir=WEST | DiagEntry[BlockPos{x=-1691, y=82, z=200} -> BlockPos{x=-1702, y=82, z=195}, west -> NORTHWEST, r=15]
+SEG[6] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1702,82,195) startDir=WEST end=(-1734,81,163) endDir=WEST | DiagStraight[BlockPos{x=-1702, y=82, z=195} -> BlockPos{x=-1734, y=81, z=163}, NORTHWEST, len=32, elev=-1]
+SEG[7] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1734,81,163) startDir=WEST end=(-1766,80,131) endDir=WEST | DiagStraight[BlockPos{x=-1734, y=81, z=163} -> BlockPos{x=-1766, y=80, z=131}, NORTHWEST, len=32, elev=-1]
+SEG[8] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1766,80,131) startDir=WEST end=(-1798,79,99) endDir=WEST | DiagStraight[BlockPos{x=-1766, y=80, z=131} -> BlockPos{x=-1798, y=79, z=99}, NORTHWEST, len=32, elev=-1]
+SEG[9] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1798,79,99) startDir=WEST end=(-1830,78,67) endDir=WEST | DiagStraight[BlockPos{x=-1798, y=79, z=99} -> BlockPos{x=-1830, y=78, z=67}, NORTHWEST, len=32, elev=-1]
+SEG[10] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1830,78,67) startDir=WEST end=(-1862,77,35) endDir=WEST | DiagStraight[BlockPos{x=-1830, y=78, z=67} -> BlockPos{x=-1862, y=77, z=35}, NORTHWEST, len=32, elev=-1]
+SEG[11] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1862,77,35) startDir=WEST end=(-1894,76,3) endDir=WEST | DiagStraight[BlockPos{x=-1862, y=77, z=35} -> BlockPos{x=-1894, y=76, z=3}, NORTHWEST, len=32, elev=-1]
+SEG[12] DiagonalStraightSegment type=DIAGONAL_STRAIGHT start=(-1894,76,3) startDir=WEST end=(-1921,76,-24) endDir=WEST | DiagStraight[BlockPos{x=-1894, y=76, z=3} -> BlockPos{x=-1921, y=76, z=-24}, NORTHWEST, len=27, elev=0]
+SEG[13] DiagonalCurveSegment type=DIAGONAL_EXIT start=(-1921,76,-24) startDir=WEST end=(-1932,76,-29) endDir=WEST | DiagExit[BlockPos{x=-1921, y=76, z=-24} -> BlockPos{x=-1932, y=76, z=-29}, NORTHWEST -> west, r=15]
+SEG[14] SCurve45Segment type=SCURVE_45 start=(-1932,76,-29) startDir=WEST end=(-1964,76,-49) endDir=WEST | SCurve45[BlockPos{x=-1932, y=76, z=-29} -> BlockPos{x=-1964, y=76, z=-49}, r=15, diag=14, RIGHT, elev=0]
+SEG[15] BezierSegment type=BEZIER start=(-1964,76,-49) startDir=WEST end=(-2013,71,-49) endDir=WEST | Bezier[BlockPos{x=-1964, y=76, z=-49} -> BlockPos{x=-2013, y=71, z=-49}, elevation=-5]
+SEG[16] BezierSegment type=BEZIER start=(-2013,71,-49) startDir=WEST end=(-2030,72,-47) endDir=WEST | Bezier[BlockPos{x=-2013, y=71, z=-49} -> BlockPos{x=-2030, y=72, z=-47}, elevation=+1]

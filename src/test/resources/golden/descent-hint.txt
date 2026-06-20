@@ -1,0 +1,52 @@
+== COARSE WAYPOINTS (41) ==
+WP[0] (0,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[1] (8,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[2] (16,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[3] (24,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[4] (32,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[5] (40,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[6] (48,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[7] (56,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[8] (64,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[9] (72,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[10] (80,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[11] (88,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[12] (96,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[13] (104,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[14] (112,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[15] (120,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[16] (128,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[17] (136,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[18] (144,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[19] (152,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[20] (160,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[21] (168,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[22] (176,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[23] (184,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[24] (192,72,0) advisedY=71 type=TUNNEL
+WP[25] (196,70,0) advisedY=70 type=TUNNEL
+WP[26] (200,72,0) advisedY=69 type=TUNNEL
+WP[27] (204,68,0) advisedY=68 type=TUNNEL
+WP[28] (208,72,0) advisedY=67 type=TUNNEL
+WP[29] (212,66,0) advisedY=66 type=TUNNEL
+WP[30] (216,72,0) advisedY=65 type=TUNNEL
+WP[31] (220,64,0) advisedY=64 type=TUNNEL
+WP[32] (224,72,0) advisedY=63 type=TUNNEL
+WP[33] (228,62,0) advisedY=62 type=TUNNEL
+WP[34] (232,72,0) advisedY=61 type=TUNNEL
+WP[35] (236,60,0) advisedY=60 type=TUNNEL
+WP[36] (240,72,0) advisedY=59 type=TUNNEL
+WP[37] (244,58,0) advisedY=58 type=TUNNEL
+WP[38] (248,72,0) advisedY=57 type=TUNNEL
+WP[39] (252,56,0) advisedY=56 type=FLAT_MAINTAIN
+WP[40] (256,55,0) advisedY=55 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(256,56,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (5) ==
+SEG[0] BezierSegment type=BEZIER start=(0,72,0) startDir=EAST end=(64,72,0) endDir=EAST | Bezier[BlockPos{x=0, y=72, z=0} -> BlockPos{x=64, y=72, z=0}, elevation=+0]
+SEG[1] BezierSegment type=BEZIER start=(64,72,0) startDir=EAST end=(128,72,0) endDir=EAST | Bezier[BlockPos{x=64, y=72, z=0} -> BlockPos{x=128, y=72, z=0}, elevation=+0]
+SEG[2] BezierSegment type=BEZIER start=(128,72,0) startDir=EAST end=(184,72,0) endDir=EAST | Bezier[BlockPos{x=128, y=72, z=0} -> BlockPos{x=184, y=72, z=0}, elevation=+0]
+SEG[3] TunnelSegment type=ELEVATED_TUNNEL start=(184,72,0) startDir=EAST end=(248,57,0) endDir=EAST | ElevatedTunnel[BlockPos{x=184, y=72, z=0} -> BlockPos{x=248, y=57, z=0}, elevation=-15]
+SEG[4] BezierSegment type=BEZIER start=(248,57,0) startDir=EAST end=(256,56,0) endDir=EAST | Bezier[BlockPos{x=248, y=57, z=0} -> BlockPos{x=256, y=56, z=0}, elevation=-1]
+== SELECTED ALTERNATIVE ==
+none

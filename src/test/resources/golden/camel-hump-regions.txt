@@ -1,0 +1,8 @@
+== PEAKS flat at trackY -> no peaks (0) ==
+== PEAKS single peak from trackY (1) ==
+  start=1 end=5 depth=18 span=32
+== PEAKS local bump on elevated plateau (trackY far below) (1) ==
+  start=2 end=4 depth=14 span=16
+== DIPS flat -> no dips (0) ==
+== DIPS single dip (1) ==
+  start=1 end=5 depth=22 span=32

@@ -1,0 +1,318 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.115'
+    id 'idea'
+    id 'jacoco'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    // Define wrapper values here so as to not have to always do so when updating gradlew.properties.
+    // Switching this to Wrapper.DistributionType.ALL will download the full gradle sources that comes with
+    // documentation attached on cursor hover of gradle classes and methods. However, this comes with increased
+    // file size for Gradle. If you do switch this to ALL, run the Gradle wrapper task twice afterwards.
+    // (Verify by checking gradle/wrapper/gradle-wrapper.properties to see if distributionUrl now points to `-all`)
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+version = mod_version
+group = mod_group_id
+
+repositories {
+    // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        url = "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
+
+base {
+    archivesName = "${mod_id}-neoforge"
+}
+
+// Mojang ships Java 21 to end users in 1.21.1, so mods should target Java 21.
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// GameTests live on the mod's runtime classpath (not src/test, which is the JUnit sourceset
+// run under NeoForge's unitTest extension). They cover the live-world integration seams the
+// pure planner goldens cannot reach: placement -> Create track-graph stitching -> traversal.
+sourceSets {
+    gametest
+}
+
+// The gametest sourceset compiles against main and the same modding/mod dependencies.
+configurations {
+    gametestImplementation.extendsFrom implementation
+    gametestCompileOnly.extendsFrom compileOnly
+    gametestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+neoForge {
+    // Specify the version of NeoForge to use.
+    version = project.neo_version
+
+    // Give the gametest sourceset the Minecraft/NeoForge compile + runtime dependencies.
+    addModdingDependenciesTo sourceSets.gametest
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    // This line is optional. Access Transformers are automatically detected
+    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+
+    // Default run configurations.
+    // These can be tweaked, removed, or duplicated as needed.
+    runs {
+        client {
+            client()
+
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
+        gameTestServer {
+            type = "gameTestServer"
+            // Run from the gametest sourceset so the holders are on this run's classpath.
+            sourceSet = sourceSets.gametest
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            data()
+
+            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+            // gameDirectory = project.file('run-data')
+
+            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+
+        // applies to all the run configs above
+        configureEach {
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        // define mod <-> source bindings
+        // these are used to tell the game which sources are for which mod
+        // multi mod projects should define one per mod
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+            // GameTest holders ship as part of the mod so @GameTestHolder is scanned, but live
+            // in their own sourceset so they stay out of the published jar.
+            sourceSet(sourceSets.gametest)
+        }
+    }
+
+    // Run JUnit tests against a minimal loaded Minecraft/NeoForge environment so the
+    // route planner's package-private off-thread path can be exercised directly.
+    unitTest {
+        enable()
+        testedMod = mods.named(mod_id)
+    }
+}
+
+// The gametest world is throwaway and recreated every run, for two reasons:
+//   1. Correctness: a chunk saved by a previous run is reloaded from disk verbatim, bypassing the
+//      chunk generator's fill — so after the terrain generator changes (e.g. a new
+//      TestTerrainChunkGenerator shape), stale chunks would serve old terrain and silently break
+//      terrain-dependent tests. A fresh world forces regeneration with the current generator.
+//   2. Speed: Minecraft saves the world at shutdown through a single IOWorker thread doing serial,
+//      seek-heavy region-file writes. On a spinning disk that flush takes MINUTES for a ~20 MB
+//      world (confirmed by thread dumps parked in RegionFile.write/pwrite). Pointing run/world at
+//      tmpfs (/dev/shm, RAM) makes the save effectively instant. If /dev/shm is unavailable we fall
+//      back to deleting the on-disk world (correctness only).
+// Paths resolve at configuration time and the doFirst uses only java.io/java.nio (no Gradle project
+// reference), as required by the configuration cache.
+tasks.named('runGameTestServer') {
+    def worldDir = file('run/world')
+    def tmpfsRoot = file('/dev/shm')
+    def tmpfsWorld = new File(tmpfsRoot, 'railwaysuntold-gametest-world')
+    doFirst {
+        def wp = worldDir.toPath()
+        // Clear whatever run/world currently is: a tmpfs symlink from a prior run, or a real
+        // on-disk directory. Deleting a symlink must not recurse into (and wipe) its target.
+        if (java.nio.file.Files.isSymbolicLink(wp)) {
+            java.nio.file.Files.delete(wp)
+        } else {
+            worldDir.deleteDir()
+        }
+        if (tmpfsRoot.isDirectory()) {
+            tmpfsWorld.deleteDir()
+            tmpfsWorld.mkdirs()
+            worldDir.parentFile.mkdirs()
+            java.nio.file.Files.createSymbolicLink(wp, tmpfsWorld.toPath())
+        }
+    }
+}
+
+// JaCoCo coverage for the gametest run. The gametests execute in the forked gameTestServer JVM,
+// so the unit-test JaCoCo report (src/test) can't see them. Attach the agent to that JVM and report
+// against the main sourceset, giving a true integration-coverage map. Run:
+//   ./gradlew runGameTestServer gameTestCoverageReport
+jacoco {
+    toolVersion = '0.8.12'
+}
+// Coverage of the gametest run is OPT-IN (./gradlew runGameTestServer -PgametestCoverage), not forced
+// on every run: the JaCoCo agent adds startup cost and has been fragile inside the gameTestServer JVM,
+// and normal gametest runs should stay clean. When enabled, only our mod is instrumented — instrumenting
+// Minecraft/Create is pointless (the report is scoped to our sourceset) and fatal (e.g.
+// net.minecraft...Blocks.<clinit> is too large to instrument).
+if (providers.gradleProperty('gametestCoverage').present) {
+    tasks.named('runGameTestServer') {
+        jacoco.applyTo(it)
+        it.jacoco.destinationFile = layout.buildDirectory.file('jacoco/gameTestServer.exec').get().asFile
+        it.jacoco.includes = ['com.vodmordia.railwaysuntold.*']
+    }
+}
+// Combined coverage = JUnit unit tests (test.exec, auto-written by the jacoco plugin for the Test
+// task) UNION the gametest run (gameTestServer.exec). Run all three for the true picture:
+//   ./gradlew test runGameTestServer combinedCoverageReport
+tasks.register('combinedCoverageReport', JacocoReport) {
+    group = 'verification'
+    description = 'Combined unit + gametest coverage of the main sourceset.'
+    executionData fileTree(layout.buildDirectory.dir('jacoco')).include('*.exec')
+    sourceSets sourceSets.main
+    reports {
+        html.required = true
+        xml.required = true
+    }
+}
+
+// Include resources generated by data generators.
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+// Sets up a dependency configuration called 'localRuntime'.
+// This configuration should be used instead of 'runtimeOnly' to declare
+// a dependency that will be present for runtime testing but that is
+// "optional", meaning it will not be pulled by dependents of this mod.
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    // Create mod dependency (hard dependency)
+    implementation "curse.maven:create-328085:7408951"
+
+    // Paxi - global datapack loader (dev only, requires YUNG's API)
+    localRuntime "curse.maven:paxi-neoforge-1015157:6485740"
+    localRuntime "curse.maven:yungs-api-neoforge-1015100:6715463"
+
+    // Copycats+ (compile only for mixin target)
+    compileOnly "curse.maven:copycats-968398:7634682"
+
+    // FramedBlocks (compile only for mixin target)
+    compileOnly "curse.maven:framedblocks-441647:7386520"
+
+    // Example optional mod dependency with JEI
+    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
+    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+    // compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
+    // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
+    // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+
+    // Example mod dependency using a mod jar from ./libs with a flat dir repository
+    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
+    // The group id is ignored when searching -- in this case, it is "blank"
+    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+
+    // Example mod dependency using a file as dependency
+    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+
+    // Example project dependency using a sister or child project:
+    // implementation project(":myproject")
+
+    // For more info:
+    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
+    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+    // GameTests compile against the mod's main classes.
+    gametestImplementation sourceSets.main.output
+
+    // Characterization tests for the route planner (Phase 0+ refactor safety net).
+    testImplementation platform("org.junit:junit-bom:5.10.2")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.mockito:mockito-core:5.11.0"
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    systemProperty 'golden.source.dir', file('src/test/resources/golden').absolutePath
+    systemProperty 'golden.update', System.getProperty('golden.update', 'false')
+}
+
+// This block of code expands all declared replace properties in the specified resource targets.
+// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+// Include the output of "generateModMetadata" as an input directory for the build
+// this works with both building through Gradle and the IDE.
+sourceSets.main.resources.srcDir generateModMetadata
+// To avoid having to run "generateModMetadata" manually, make it run on every project reload
+neoForge.ideSyncTask generateModMetadata
+
+// Example configuration to allow publishing using the maven-publish plugin
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

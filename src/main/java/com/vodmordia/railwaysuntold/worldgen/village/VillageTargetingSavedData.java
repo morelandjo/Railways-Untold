@@ -1,0 +1,197 @@
+package com.vodmordia.railwaysuntold.worldgen.village;
+
+import com.vodmordia.railwaysuntold.worldgen.village.network.StructureConnection;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.saveddata.SavedData;
+
+import java.util.*;
+
+/**
+ * Persists village targeting data across world saves/loads.
+ */
+public class VillageTargetingSavedData extends SavedData {
+
+    private static final String DATA_NAME = "railwaysuntold_village_targeting";
+
+    private final Map<UUID, VillageData> discoveredVillages = new HashMap<>();
+    private final VillageAssignmentTracker assignmentTracker = new VillageAssignmentTracker();
+    private final AttemptedVillageTracker attemptedTracker = new AttemptedVillageTracker();
+    private final PlacedStationTracker stationTracker = new PlacedStationTracker();
+    private final StationBlockProtection stationBlockProtection = new StationBlockProtection();
+    private final List<StructureConnection> networkEdges = new ArrayList<>();
+
+    public VillageTargetingSavedData() {
+    }
+
+    /**
+     * Gets the VillageTargetingSavedData instance for a level
+     */
+    public static VillageTargetingSavedData get(ServerLevel level) {
+        return level.getDataStorage().computeIfAbsent(
+                new Factory<>(
+                        VillageTargetingSavedData::new,
+                        VillageTargetingSavedData::load
+                ),
+                DATA_NAME
+        );
+    }
+
+    /** Convenience: check whether a position is protected by any station on this level. */
+    public static boolean isBlockProtectedByStation(ServerLevel level, BlockPos pos) {
+        return get(level).getStationBlockProtection().isProtected(pos);
+    }
+
+    /**
+     * Gets the assignment tracker
+     */
+    public VillageAssignmentTracker getAssignmentTracker() {
+        return assignmentTracker;
+    }
+
+    /**
+     * Gets the attempted village tracker
+     */
+    public AttemptedVillageTracker getAttemptedTracker() {
+        return attemptedTracker;
+    }
+
+    /**
+     * Gets the placed station tracker
+     */
+    public PlacedStationTracker getStationTracker() {
+        return stationTracker;
+    }
+
+    /**
+     * Gets the station block protection tracker
+     */
+    public StationBlockProtection getStationBlockProtection() {
+        return stationBlockProtection;
+    }
+
+    /**
+     * Returns an unmodifiable view of the planner-computed edge list.
+     */
+    public List<StructureConnection> getNetworkEdges() {
+        return Collections.unmodifiableList(networkEdges);
+    }
+
+    /**
+     * Replaces the planner-computed edge list and marks the saved-data dirty.
+     * Pass an empty list to clear.
+     */
+    public void setNetworkEdges(List<StructureConnection> edges) {
+        networkEdges.clear();
+        if (edges != null) networkEdges.addAll(edges);
+        setDirty();
+    }
+
+    /**
+     * Adds a discovered village to the cache
+     */
+    public void addDiscoveredVillage(VillageInfo village) {
+        VillageData villageData = new VillageData(
+                village.villageId,
+                village.center,
+                village.villageType
+        );
+        discoveredVillages.put(village.villageId, villageData);
+        setDirty();
+    }
+
+    @Override
+    public CompoundTag save(CompoundTag tag, HolderLookup.Provider provider) {
+        ListTag villagesList = new ListTag();
+        for (VillageData village : discoveredVillages.values()) {
+            CompoundTag villageTag = new CompoundTag();
+            villageTag.putUUID(VillageNbtKeys.ID, village.villageId);
+            villageTag.putLong(VillageNbtKeys.CENTER, village.center.asLong());
+            villageTag.putString(VillageNbtKeys.TYPE, village.villageType);
+            villagesList.add(villageTag);
+        }
+        tag.put(VillageNbtKeys.VILLAGES, villagesList);
+        tag.put(VillageNbtKeys.ASSIGNMENTS, assignmentTracker.save());
+        tag.put(VillageNbtKeys.ATTEMPTED_VILLAGES, attemptedTracker.save());
+        tag.put(VillageNbtKeys.PLACED_STATIONS, stationTracker.save());
+        tag.put(VillageNbtKeys.STATION_BLOCK_PROTECTION, stationBlockProtection.save());
+
+        ListTag edgesList = new ListTag();
+        for (StructureConnection edge : networkEdges) {
+            CompoundTag edgeTag = new CompoundTag();
+            edgeTag.putLong(VillageNbtKeys.EDGE_FROM, edge.from().asLong());
+            edgeTag.putLong(VillageNbtKeys.EDGE_TO, edge.to().asLong());
+            edgesList.add(edgeTag);
+        }
+        tag.put(VillageNbtKeys.NETWORK_EDGES, edgesList);
+
+        return tag;
+    }
+
+    /**
+     * Loads data from NBT
+     */
+    public static VillageTargetingSavedData load(CompoundTag tag, HolderLookup.Provider provider) {
+        VillageTargetingSavedData savedData = new VillageTargetingSavedData();
+
+        if (tag.contains(VillageNbtKeys.VILLAGES, Tag.TAG_LIST)) {
+            ListTag villagesList = tag.getList(VillageNbtKeys.VILLAGES, Tag.TAG_COMPOUND);
+            for (int i = 0; i < villagesList.size(); i++) {
+                CompoundTag villageTag = villagesList.getCompound(i);
+                if (villageTag.hasUUID(VillageNbtKeys.ID)) {
+                    UUID id = villageTag.getUUID(VillageNbtKeys.ID);
+                    BlockPos center = BlockPos.of(villageTag.getLong(VillageNbtKeys.CENTER));
+                    String type = villageTag.getString(VillageNbtKeys.TYPE);
+                    savedData.discoveredVillages.put(id, new VillageData(id, center, type));
+                }
+            }
+        }
+
+        if (tag.contains(VillageNbtKeys.ASSIGNMENTS)) {
+            savedData.assignmentTracker.load(tag.getCompound(VillageNbtKeys.ASSIGNMENTS));
+        }
+
+        if (tag.contains(VillageNbtKeys.ATTEMPTED_VILLAGES)) {
+            savedData.attemptedTracker.load(tag.getCompound(VillageNbtKeys.ATTEMPTED_VILLAGES));
+        }
+
+        if (tag.contains(VillageNbtKeys.PLACED_STATIONS)) {
+            savedData.stationTracker.load(tag.getCompound(VillageNbtKeys.PLACED_STATIONS));
+        }
+
+        if (tag.contains(VillageNbtKeys.STATION_BLOCK_PROTECTION)) {
+            savedData.stationBlockProtection.load(tag.getCompound(VillageNbtKeys.STATION_BLOCK_PROTECTION));
+        }
+
+        if (tag.contains(VillageNbtKeys.NETWORK_EDGES, Tag.TAG_LIST)) {
+            ListTag edgesList = tag.getList(VillageNbtKeys.NETWORK_EDGES, Tag.TAG_COMPOUND);
+            for (int i = 0; i < edgesList.size(); i++) {
+                CompoundTag edgeTag = edgesList.getCompound(i);
+                BlockPos from = BlockPos.of(edgeTag.getLong(VillageNbtKeys.EDGE_FROM));
+                BlockPos to = BlockPos.of(edgeTag.getLong(VillageNbtKeys.EDGE_TO));
+                savedData.networkEdges.add(new StructureConnection(from, to));
+            }
+        }
+
+        return savedData;
+    }
+
+    /**
+     * Cached village data for persistence
+     */
+    public static class VillageData {
+        public final UUID villageId;
+        public final BlockPos center;
+        public final String villageType;
+
+        public VillageData(UUID villageId, BlockPos center, String villageType) {
+            this.villageId = villageId;
+            this.center = center;
+            this.villageType = villageType;
+        }
+    }
+}

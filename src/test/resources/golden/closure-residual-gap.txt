@@ -1,0 +1,3 @@
+== SEGMENTS (2) ==
+SEG[0] BezierSegment start=(0,72,0) startDir=east end=(100,72,0) endDir=east
+SEG[1] BezierSegment start=(100,72,0) startDir=east end=(112,74,4) endDir=east
