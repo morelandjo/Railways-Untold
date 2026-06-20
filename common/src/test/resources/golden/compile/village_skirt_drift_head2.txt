@@ -1,0 +1,4 @@
+== PLANNED PATH ==
+valid=true finalPos=(-2030,72,-47) finalDir=WEST invalidCode=null invalidReason=null
+== PATH SEGMENTS (1) ==
+SEG[0] BezierSegment type=BEZIER start=(-1981,76,-49) startDir=WEST end=(-2030,72,-47) endDir=WEST | Bezier[BlockPos{x=-1981, y=76, z=-49} -> BlockPos{x=-2030, y=72, z=-47}, elevation=-4]

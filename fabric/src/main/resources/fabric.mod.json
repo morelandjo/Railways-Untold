@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_author}"
+  ],
+
+  "license": "${license}",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.vodmordia.railwaysuntold.fabric.FabricRailwaysUntold"
+    ],
+    "client": [
+      "com.vodmordia.railwaysuntold.fabric.FabricRailwaysUntoldClient"
+    ],
+    "modmenu": [
+      "com.vodmordia.railwaysuntold.fabric.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "railwaysuntold.mixins.json",
+    "railwaysuntold-copycats.mixins.json",
+    "railwaysuntold-framedblocks.mixins.json"
+  ],
+  "depends": {
+    "minecraft": ">=${minecraft_version}",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "architectury": "*",
+    "cloth-config": "*",
+    "create": "*"
+  }
+}

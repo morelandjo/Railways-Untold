@@ -1,0 +1,94 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+loom {
+    forge {
+        mixinConfig "railwaysuntold.mixins.json"
+        mixinConfig "railwaysuntold-copycats.mixins.json"
+        mixinConfig "railwaysuntold-framedblocks.mixins.json"
+    }
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:$rootProject.forge_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury-forge:$rootProject.architectury_api_version"
+
+    // Cloth Config
+    modApi "me.shedaniel.cloth:cloth-config-forge:$rootProject.cloth_config_version"
+
+    // Create and its dependencies (from maven.createmod.net)
+    modImplementation("com.simibubi.create:create-$rootProject.minecraft_version:$rootProject.create_forge_version:slim") { transitive = false }
+    modImplementation "net.createmod.ponder:Ponder-Forge-$rootProject.minecraft_version:$rootProject.ponder_version"
+    modImplementation "com.tterrag.registrate:Registrate:$rootProject.registrate_version"
+    modCompileOnly "dev.engine-room.flywheel:flywheel-forge-api-$rootProject.minecraft_version:$rootProject.flywheel_version"
+    modRuntimeOnly "dev.engine-room.flywheel:flywheel-forge-$rootProject.minecraft_version:$rootProject.flywheel_version"
+
+    // MixinExtras (required by Create 6.0)
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:$rootProject.mixinextras_version"))
+    implementation "io.github.llamalad7:mixinextras-forge:$rootProject.mixinextras_version"
+
+    // Development QOL
+    modLocalRuntime("mezz.jei:jei-$rootProject.minecraft_version-forge:$rootProject.jei_version") { transitive = false }
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mod_id', rootProject.mod_id
+    inputs.property 'mod_name', rootProject.mod_name
+    inputs.property 'mod_description', rootProject.mod_description
+    inputs.property 'mod_author', rootProject.mod_author
+    inputs.property 'license', rootProject.license
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    inputs.property 'forge_version', rootProject.forge_version.split('-')[1]
+    inputs.property 'create_version', rootProject.create_forge_version.split('-')[0]
+
+    filesMatching('META-INF/mods.toml') {
+        expand(
+            version: project.version,
+            mod_id: rootProject.mod_id,
+            mod_name: rootProject.mod_name,
+            mod_description: rootProject.mod_description,
+            mod_author: rootProject.mod_author,
+            license: rootProject.license,
+            minecraft_version: rootProject.minecraft_version,
+            forge_version: rootProject.forge_version.split('-')[1],
+            create_version: rootProject.create_forge_version.split('-')[0]
+        )
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+}

@@ -1,0 +1,12 @@
+{
+  "required": false,
+  "package": "com.vodmordia.railwaysuntold.mixin.compat.framedblocks",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "FramedBlockEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

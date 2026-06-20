@@ -1,0 +1,51 @@
+apply plugin: 'jacoco'
+
+architectury {
+    common rootProject.enabled_platforms.split(',')
+}
+
+dependencies {
+    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
+    // which get remapped to the correct annotations on each platform.
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+
+    // Cloth Config
+    modApi "me.shedaniel.cloth:cloth-config:$rootProject.cloth_config_version"
+
+    // Create Fabric (compile only for common - actual implementation in platform modules)
+    modCompileOnly("com.simibubi.create:create-fabric-$rootProject.minecraft_version:$rootProject.create_fabric_version") {
+        exclude group: "com.jozufozu.flywheel"
+    }
+
+    // Copycats+ (compile only for mixin target)
+    modCompileOnly "curse.maven:copycats-968398:7634682"
+
+    // FramedBlocks (compile only for mixin target)
+    modCompileOnly "curse.maven:framedblocks-441647:7386520"
+
+    // JSR-305 annotations (@Nullable, @Nonnull)
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+
+    // Characterization tests for the route planner (Phase 0+ refactor safety net).
+    testImplementation platform("org.junit:junit-bom:5.10.2")
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.mockito:mockito-core:5.11.0"
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'golden.source.dir', file('src/test/resources/golden').absolutePath
+    systemProperty 'golden.update', System.getProperty('golden.update', 'false')
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}

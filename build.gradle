@@ -1,0 +1,75 @@
+plugins {
+    id 'dev.architectury.loom' version '1.7.+' apply false
+    id 'architectury-plugin' version '3.4.+'
+    id 'com.gradleup.shadow' version '8.3.6' apply false
+}
+
+architectury {
+    minecraft = project.minecraft_version
+}
+
+allprojects {
+    group = rootProject.maven_group
+    version = rootProject.mod_version
+}
+
+subprojects {
+    apply plugin: 'dev.architectury.loom'
+    apply plugin: 'architectury-plugin'
+    apply plugin: 'maven-publish'
+
+    base {
+        archivesName = "$rootProject.archives_name-$project.name"
+    }
+
+    repositories {
+        maven { url = 'https://maven.parchmentmc.org' } // Parchment mappings
+        maven { url = 'https://maven.blamejared.com/' } // JEI
+        maven { url = 'https://maven.tterrag.com/' } // Flywheel, Create, Registrate (Forge)
+        maven { url = 'https://modmaven.dev/' } // ModMaven (Flywheel legacy)
+        maven { url = 'https://maven.createmod.net' } // Create mod
+        maven { url = 'https://maven.shedaniel.me' } // Cloth Config, Architectury API
+        maven { url = 'https://cursemaven.com' } // CurseForge Maven
+        maven { url = 'https://api.modrinth.com/maven' } // Modrinth Maven
+        maven { url = 'https://mvn.devos.one/releases' } // Porting Lib releases
+        maven { url = 'https://mvn.devos.one/snapshots' } // Create Fabric and dependencies
+        maven { url = 'https://maven.jamieswhiteshirt.com/libs-release' } // Reach Entity Attributes
+        maven { url = 'https://raw.githubusercontent.com/Fuzss/modresources/main/maven' } // Forge Config API Port
+        maven { url = 'https://maven.terraformersmc.com/releases' } // Mod Menu
+        maven {
+            url = 'https://jitpack.io/'
+            content { includeGroupAndSubgroups('com.github') }
+        }
+    }
+
+    loom {
+        silentMojangMappingsLicense()
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:$rootProject.minecraft_version"
+        mappings loom.officialMojangMappings()
+    }
+
+    java {
+        withSourcesJar()
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.release = 17
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId = base.archivesName.get()
+                from components.java
+            }
+        }
+
+        repositories {
+        }
+    }
+}

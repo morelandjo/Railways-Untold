@@ -1,0 +1,31 @@
+== at-grade mid-route, no ramp room -> merge (crossIdx=4, track 70-74) (0) ==
+== at-grade mid-route, under-ramp fits -> underpass (crossIdx=4, track 73-77) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(32,72,0) adj=9
+  ADJ idx=4 newY=65 type=CROSSING_UNDER
+  ADJ idx=0 newY=71 type=TERRAIN_FOLLOW
+  ADJ idx=1 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=2 newY=68 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=66 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=66 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=68 type=TERRAIN_FOLLOW
+  ADJ idx=7 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=8 newY=71 type=TERRAIN_FOLLOW
+== separated above, room -> overpass ramp (crossIdx=4, track 60-68) (1) ==
+RES type=CROSSING crossing=OVERPASS loc=(32,72,0) adj=5
+  ADJ idx=4 newY=76 type=CROSSING_OVER
+  ADJ idx=2 newY=73 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=73 type=TERRAIN_FOLLOW
+== separated below, room -> underpass ramp (crossIdx=4, track 76-84) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(32,72,0) adj=5
+  ADJ idx=4 newY=68 type=CROSSING_UNDER
+  ADJ idx=2 newY=71 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=71 type=TERRAIN_FOLLOW
+== sufficient clearance above (crossIdx=4, track 55-60) (1) ==
+RES type=CROSSING crossing=OVERPASS loc=(32,72,0) adj=0
+== sufficient clearance below (crossIdx=4, track 85-90) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(32,72,0) adj=0
+== separated, no room -> merge (crossIdx=1, track 60-68) (0) ==

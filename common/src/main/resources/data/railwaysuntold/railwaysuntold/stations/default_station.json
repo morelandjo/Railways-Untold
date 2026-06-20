@@ -1,0 +1,10 @@
+{
+  "schematic": "railwaysuntold:station",
+  "weight": 10,
+  "biome_whitelist": [],
+  "biome_blacklist": [
+    "#minecraft:is_mountain",
+    "#minecraft:is_badlands",
+    "minecraft:stony_shore"
+  ]
+}

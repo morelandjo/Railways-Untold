@@ -1,0 +1,27 @@
+== forced at-grade, under-first, room -> underpass (crossIdx=7, track 70-74) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(56,72,0) adj=11
+  ADJ idx=7 newY=62 type=CROSSING_UNDER
+  ADJ idx=2 newY=70 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=4 newY=67 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=65 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=64 type=TERRAIN_FOLLOW
+  ADJ idx=8 newY=64 type=TERRAIN_FOLLOW
+  ADJ idx=9 newY=65 type=TERRAIN_FOLLOW
+  ADJ idx=10 newY=67 type=TERRAIN_FOLLOW
+  ADJ idx=11 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=12 newY=70 type=TERRAIN_FOLLOW
+== forced at-grade, over preferred, room -> overpass (crossIdx=7, track 70-74) (1) ==
+RES type=CROSSING crossing=OVERPASS loc=(56,72,0) adj=11
+  ADJ idx=7 newY=82 type=CROSSING_OVER
+  ADJ idx=2 newY=74 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=4 newY=77 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=79 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=80 type=TERRAIN_FOLLOW
+  ADJ idx=8 newY=80 type=TERRAIN_FOLLOW
+  ADJ idx=9 newY=79 type=TERRAIN_FOLLOW
+  ADJ idx=10 newY=77 type=TERRAIN_FOLLOW
+  ADJ idx=11 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=12 newY=74 type=TERRAIN_FOLLOW
+== forced at-grade, no room -> no resolution (crossIdx=1, track 70-74) (0) ==

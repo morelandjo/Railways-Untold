@@ -1,0 +1,121 @@
+{
+  "text.autoconfig.railways-untold/config.title": "Railways Untold Configuration",
+
+  "text.autoconfig.railways-untold/config.category.track_clearing": "Track Clearing",
+  "text.autoconfig.railways-untold/config.category.features": "Features",
+  "text.autoconfig.railways-untold/config.category.blocks": "Blocks",
+  "text.autoconfig.railways-untold/config.category.pillars": "Support Pillars",
+  "text.autoconfig.railways-untold/config.category.terrain": "Terrain",
+  "text.autoconfig.railways-untold/config.category.tunnels": "Tunnels",
+  "text.autoconfig.railways-untold/config.category.custom_nbt": "Custom NBT",
+  "text.autoconfig.railways-untold/config.category.track_material": "Track Material",
+  "text.autoconfig.railways-untold/config.category.events": "Events",
+  "text.autoconfig.railways-untold/config.category.world_generation": "World Generation",
+  "text.autoconfig.railways-untold/config.category.debug": "Debug",
+
+  "text.autoconfig.railways-untold/config.option.horizontalExpansion": "Horizontal Expansion",
+  "text.autoconfig.railways-untold/config.option.horizontalExpansion.@Tooltip": "Number of blocks to clear horizontally on each side of the track.",
+
+  "text.autoconfig.railways-untold/config.option.verticalExpansion": "Vertical Expansion",
+  "text.autoconfig.railways-untold/config.option.verticalExpansion.@Tooltip": "Number of blocks to clear vertically above the track.",
+
+  "text.autoconfig.railways-untold/config.option.generateInWorldTypes": "Generate In World Types",
+  "text.autoconfig.railways-untold/config.option.generateInWorldTypes.@Tooltip": "Comma-separated list of world types where track generation is allowed (default, flat, debug).",
+
+  "text.autoconfig.railways-untold/config.option.startingTrain": "Starting Train",
+  "text.autoconfig.railways-untold/config.option.startingTrain.@Tooltip": "Whether to place a starting train at world generation.",
+
+  "text.autoconfig.railways-untold/config.option.branchesEnabled": "Branches Enabled",
+  "text.autoconfig.railways-untold/config.option.branchesEnabled.@Tooltip": "Whether track branches (junctions) are enabled.",
+
+  "text.autoconfig.railways-untold/config.option.recursiveBranchingEnabled": "Recursive Branching",
+  "text.autoconfig.railways-untold/config.option.recursiveBranchingEnabled.@Tooltip": "Whether branches can create additional branches. Only applies if branches are enabled.",
+
+  "text.autoconfig.railways-untold/config.option.maxBranchDepth": "Max Branch Depth",
+  "text.autoconfig.railways-untold/config.option.maxBranchDepth.@Tooltip": "Maximum depth for recursive branching. 0 = unlimited.",
+
+  "text.autoconfig.railways-untold/config.option.maxActiveHeads": "Max Active Heads",
+  "text.autoconfig.railways-untold/config.option.maxActiveHeads.@Tooltip": "Maximum simultaneous active track heads. 0 = unlimited.",
+
+  "text.autoconfig.railways-untold/config.option.minBranchSpacing": "Min Branch Spacing",
+  "text.autoconfig.railways-untold/config.option.minBranchSpacing.@Tooltip": "Minimum distance in blocks between consecutive branches from the same track head.",
+
+  "text.autoconfig.railways-untold/config.option.structureTargeting": "Structure Targeting",
+  "text.autoconfig.railways-untold/config.option.structureTargeting.@Tooltip": "Whether tracks should path toward structures defined in biome settings data packs.",
+
+  "text.autoconfig.railways-untold/config.option.allAvoidance": "All Avoidance",
+  "text.autoconfig.railways-untold/config.option.allAvoidance.@Tooltip": "Whether tracks should avoid obstacles by turning.",
+
+  "text.autoconfig.railways-untold/config.option.sideBySideTracks": "Side-by-Side Dual Tracks",
+  "text.autoconfig.railways-untold/config.option.sideBySideTracks.@Tooltip": "Enable side-by-side dual track mode with two parallel tracks in opposite directions.",
+
+  "text.autoconfig.railways-untold/config.option.sidingsEnabled": "Sidings Enabled",
+  "text.autoconfig.railways-untold/config.option.sidingsEnabled.@Tooltip": "Enable rail sidings (passing loops) on long straight track sections.",
+
+  "text.autoconfig.railways-untold/config.option.sidingMinStraightSegments": "Siding Min Straight Segments",
+  "text.autoconfig.railways-untold/config.option.sidingMinStraightSegments.@Tooltip": "Minimum consecutive straight segments before a siding can be placed. Each segment is ~16 blocks.",
+
+  "text.autoconfig.railways-untold/config.option.bridgePillarInterval": "Bridge Pillar Interval",
+  "text.autoconfig.railways-untold/config.option.bridgePillarInterval.@Tooltip": "Distance in blocks between bridge pillars along a bridge run.",
+
+  "text.autoconfig.railways-untold/config.option.bridgeElevationThreshold": "Bridge Elevation Threshold",
+  "text.autoconfig.railways-untold/config.option.bridgeElevationThreshold.@Tooltip": "Minimum height above ground to use bridge decking instead of terrain fill. Set to 0 for water-only bridge decking.",
+
+  "text.autoconfig.railways-untold/config.option.cliffThreshold": "Cliff Threshold",
+  "text.autoconfig.railways-untold/config.option.cliffThreshold.@Tooltip": "Minimum elevation change to classify terrain as a cliff.",
+
+  "text.autoconfig.railways-untold/config.option.bankingCurves": "Banking Curves",
+  "text.autoconfig.railways-untold/config.option.bankingCurves.@Tooltip": "Allow curves to change elevation while turning.",
+
+  "text.autoconfig.railways-untold/config.option.laterals": "Lateral Shifts",
+  "text.autoconfig.railways-untold/config.option.laterals.@Tooltip": "Whether tracks can make gentle lateral shifts.",
+
+  "text.autoconfig.railways-untold/config.option.lateralOffset": "Lateral Offset",
+  "text.autoconfig.railways-untold/config.option.lateralOffset.@Tooltip": "Maximum lateral offset in blocks for direct bezier shifts.",
+
+  "text.autoconfig.railways-untold/config.option.terrainCurveAvoidance": "Terrain Curve Avoidance",
+  "text.autoconfig.railways-untold/config.option.terrainCurveAvoidance.@Tooltip": "Whether tracks should curve away from terrain features like cliffs and ravines.",
+
+  "text.autoconfig.railways-untold/config.option.slopeRise": "Slope Rise",
+  "text.autoconfig.railways-untold/config.option.slopeRise.@Tooltip": "Rise component of the maximum slope ratio (rise:run).",
+
+  "text.autoconfig.railways-untold/config.option.slopeRun": "Slope Run",
+  "text.autoconfig.railways-untold/config.option.slopeRun.@Tooltip": "Run component of the maximum slope ratio (rise:run).",
+
+  "text.autoconfig.railways-untold/config.option.minCurveRadius": "Min Curve Radius",
+  "text.autoconfig.railways-untold/config.option.minCurveRadius.@Tooltip": "Minimum curve radius in blocks.",
+
+  "text.autoconfig.railways-untold/config.option.maxCurveRadius": "Max Curve Radius",
+  "text.autoconfig.railways-untold/config.option.maxCurveRadius.@Tooltip": "Maximum curve radius in blocks.",
+
+  "text.autoconfig.railways-untold/config.option.bridgeWaterDistance": "Bridge Water Distance",
+  "text.autoconfig.railways-untold/config.option.bridgeWaterDistance.@Tooltip": "Minimum height above water level for bridge tracks. Set to 0 to disable water bridging.",
+
+  "text.autoconfig.railways-untold/config.option.lightSpacing": "Light Spacing",
+  "text.autoconfig.railways-untold/config.option.lightSpacing.@Tooltip": "Distance in blocks between light placements in tunnels.",
+
+  "text.autoconfig.railways-untold/config.option.stationAtStart": "Station at Start",
+  "text.autoconfig.railways-untold/config.option.stationAtStart.@Tooltip": "Whether to place a station at the starting track area with the starting train.",
+
+  "text.autoconfig.railways-untold/config.option.trackGauge": "Track Gauge",
+  "text.autoconfig.railways-untold/config.option.trackGauge.@Tooltip": "Track width/gauge: standard, wide, or narrow.",
+
+  "text.autoconfig.railways-untold/config.option.customEvents": "Custom Events",
+  "text.autoconfig.railways-untold/config.option.customEvents.@Tooltip": "Enable placing custom event schematics along generated tracks.",
+
+  "text.autoconfig.railways-untold/config.option.eventSeparationMinDistance": "Event Min Distance",
+  "text.autoconfig.railways-untold/config.option.eventSeparationMinDistance.@Tooltip": "Minimum distance in blocks between consecutive events.",
+
+  "text.autoconfig.railways-untold/config.option.eventChance": "Event Chance",
+  "text.autoconfig.railways-untold/config.option.eventChance.@Tooltip": "Chance (percent) of placing an event when eligible.",
+
+  "text.autoconfig.railways-untold/config.option.verboseLogging": "Verbose Logging",
+  "text.autoconfig.railways-untold/config.option.verboseLogging.@Tooltip": "Enable verbose debug logging for track placement and chunk loading.",
+
+  "itemGroup.railwaysuntold": "Railways Untold",
+
+  "entity.railwaysuntold.starting_train": "Starting Train",
+
+  "block.railwaysuntold.dead_end": "Dead End",
+  "block.railwaysuntold.start": "Start"
+}

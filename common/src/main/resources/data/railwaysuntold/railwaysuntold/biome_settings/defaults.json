@@ -1,0 +1,19 @@
+{
+  "biome_filter": [],
+  "priority": 0,
+  "tunnel_facade_block": "create:small_scorchia_bricks",
+  "terrain_fill_block": "minecraft:gravel",
+  "terrain_fill_base_block": "minecraft:cobblestone",
+  "station_foundation_block": "minecraft:cobblestone",
+  "lighting_block": "minecraft:wall_torch",
+  "lighting_attachment": 1,
+  "track_material": "andesite",
+  "bridge_decking_nbt": "railwaysuntold:bridge_cross_section",
+  "bridge_pier_nbt": "railwaysuntold:bridge_pillar",
+  "bridge_railing_nbt": "railwaysuntold:bridge_railing",
+  "bridge_half_width": 3,
+  "bridge_pillar_deck_row": 3,
+  "structure_target_tags": ["minecraft:village"],
+  "structure_avoidance_blacklist": ["wythers:"],
+  "structure_underground_list": ["minecraft:ocean_ruins", "minecraft:shipwrecks"]
+}

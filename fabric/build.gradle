@@ -1,0 +1,82 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+
+    // Files in this configuration will be bundled into your mod using the Shadow plugin.
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    // Fabric API
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+
+    // Cloth Config
+    modApi "me.shedaniel.cloth:cloth-config-fabric:$rootProject.cloth_config_version"
+
+    // Create Fabric - dependencies are added transitively
+    // Note: Couple class is at com.simibubi.create.foundation.utility.Couple (not Catnip)
+    modImplementation("com.simibubi.create:create-fabric-$rootProject.minecraft_version:$rootProject.create_fabric_version")
+
+    // ModMenu integration (for config screen)
+    modImplementation "com.terraformersmc:modmenu:$rootProject.modmenu_version"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mod_id', rootProject.mod_id
+    inputs.property 'mod_name', rootProject.mod_name
+    inputs.property 'mod_description', rootProject.mod_description
+    inputs.property 'mod_author', rootProject.mod_author
+    inputs.property 'license', rootProject.license
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    inputs.property 'fabric_loader_version', rootProject.fabric_loader_version
+    inputs.property 'create_version', rootProject.create_fabric_version
+
+    filesMatching('fabric.mod.json') {
+        expand(
+            version: project.version,
+            mod_id: rootProject.mod_id,
+            mod_name: rootProject.mod_name,
+            mod_description: rootProject.mod_description,
+            mod_author: rootProject.mod_author,
+            license: rootProject.license,
+            minecraft_version: rootProject.minecraft_version,
+            fabric_loader_version: rootProject.fabric_loader_version,
+            create_version: rootProject.create_fabric_version
+        )
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+}

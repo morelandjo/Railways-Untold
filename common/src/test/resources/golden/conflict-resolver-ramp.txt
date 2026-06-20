@@ -1,0 +1,34 @@
+== similar-Y lower-UUID under+ramp (crossIdx=4) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(32,72,0) adj=9
+  ADJ idx=4 newY=65 type=CROSSING_UNDER
+  ADJ idx=0 newY=71 type=TERRAIN_FOLLOW
+  ADJ idx=1 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=2 newY=68 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=66 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=66 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=68 type=TERRAIN_FOLLOW
+  ADJ idx=7 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=8 newY=71 type=TERRAIN_FOLLOW
+== similar-Y higher-UUID over+ramp (crossIdx=4) (1) ==
+RES type=CROSSING crossing=OVERPASS loc=(32,72,0) adj=9
+  ADJ idx=4 newY=79 type=CROSSING_OVER
+  ADJ idx=0 newY=73 type=TERRAIN_FOLLOW
+  ADJ idx=1 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=2 newY=76 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=78 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=78 type=TERRAIN_FOLLOW
+  ADJ idx=6 newY=76 type=TERRAIN_FOLLOW
+  ADJ idx=7 newY=75 type=TERRAIN_FOLLOW
+  ADJ idx=8 newY=73 type=TERRAIN_FOLLOW
+== above -> natural overpass (crossIdx=4) (1) ==
+RES type=CROSSING crossing=OVERPASS loc=(32,72,0) adj=0
+== below -> natural underpass (crossIdx=4) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(32,72,0) adj=0
+== similar-Y lower-UUID under, ramp clamped at start (crossIdx=1) (1) ==
+RES type=CROSSING crossing=UNDERPASS loc=(8,72,0) adj=6
+  ADJ idx=1 newY=65 type=CROSSING_UNDER
+  ADJ idx=0 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=2 newY=66 type=TERRAIN_FOLLOW
+  ADJ idx=3 newY=68 type=TERRAIN_FOLLOW
+  ADJ idx=4 newY=69 type=TERRAIN_FOLLOW
+  ADJ idx=5 newY=71 type=TERRAIN_FOLLOW

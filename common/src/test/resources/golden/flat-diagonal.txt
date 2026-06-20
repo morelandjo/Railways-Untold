@@ -1,0 +1,59 @@
+== COARSE WAYPOINTS (46) ==
+WP[0] (0,72,0) advisedY=72 type=TERRAIN_FOLLOW
+WP[1] (6,72,6) advisedY=72 type=TERRAIN_FOLLOW
+WP[2] (11,72,11) advisedY=72 type=TERRAIN_FOLLOW
+WP[3] (17,72,17) advisedY=72 type=TERRAIN_FOLLOW
+WP[4] (23,72,23) advisedY=72 type=TERRAIN_FOLLOW
+WP[5] (28,72,28) advisedY=72 type=TERRAIN_FOLLOW
+WP[6] (34,72,34) advisedY=72 type=TERRAIN_FOLLOW
+WP[7] (40,72,40) advisedY=72 type=TERRAIN_FOLLOW
+WP[8] (46,72,46) advisedY=72 type=TERRAIN_FOLLOW
+WP[9] (51,72,51) advisedY=72 type=TERRAIN_FOLLOW
+WP[10] (57,72,57) advisedY=72 type=TERRAIN_FOLLOW
+WP[11] (63,72,63) advisedY=72 type=TERRAIN_FOLLOW
+WP[12] (68,72,68) advisedY=72 type=TERRAIN_FOLLOW
+WP[13] (74,72,74) advisedY=72 type=TERRAIN_FOLLOW
+WP[14] (80,72,80) advisedY=72 type=TERRAIN_FOLLOW
+WP[15] (85,72,85) advisedY=72 type=TERRAIN_FOLLOW
+WP[16] (91,72,91) advisedY=72 type=TERRAIN_FOLLOW
+WP[17] (97,72,97) advisedY=72 type=TERRAIN_FOLLOW
+WP[18] (102,72,102) advisedY=72 type=TERRAIN_FOLLOW
+WP[19] (108,72,108) advisedY=72 type=TERRAIN_FOLLOW
+WP[20] (114,72,114) advisedY=72 type=TERRAIN_FOLLOW
+WP[21] (119,72,119) advisedY=72 type=TERRAIN_FOLLOW
+WP[22] (125,72,125) advisedY=72 type=TERRAIN_FOLLOW
+WP[23] (131,72,131) advisedY=72 type=TERRAIN_FOLLOW
+WP[24] (137,72,137) advisedY=72 type=TERRAIN_FOLLOW
+WP[25] (142,72,142) advisedY=72 type=TERRAIN_FOLLOW
+WP[26] (148,72,148) advisedY=72 type=TERRAIN_FOLLOW
+WP[27] (154,72,154) advisedY=72 type=TERRAIN_FOLLOW
+WP[28] (159,72,159) advisedY=72 type=TERRAIN_FOLLOW
+WP[29] (165,72,165) advisedY=72 type=TERRAIN_FOLLOW
+WP[30] (171,72,171) advisedY=72 type=TERRAIN_FOLLOW
+WP[31] (176,72,176) advisedY=72 type=TERRAIN_FOLLOW
+WP[32] (182,72,182) advisedY=72 type=TERRAIN_FOLLOW
+WP[33] (188,72,188) advisedY=72 type=TERRAIN_FOLLOW
+WP[34] (193,72,193) advisedY=72 type=TERRAIN_FOLLOW
+WP[35] (199,72,199) advisedY=72 type=TERRAIN_FOLLOW
+WP[36] (205,72,205) advisedY=72 type=TERRAIN_FOLLOW
+WP[37] (210,72,210) advisedY=72 type=TERRAIN_FOLLOW
+WP[38] (216,72,216) advisedY=72 type=TERRAIN_FOLLOW
+WP[39] (222,72,222) advisedY=72 type=TERRAIN_FOLLOW
+WP[40] (228,72,228) advisedY=72 type=TERRAIN_FOLLOW
+WP[41] (233,72,233) advisedY=72 type=TERRAIN_FOLLOW
+WP[42] (239,72,239) advisedY=72 type=TERRAIN_FOLLOW
+WP[43] (245,72,245) advisedY=72 type=TERRAIN_FOLLOW
+WP[44] (250,72,250) advisedY=72 type=TERRAIN_FOLLOW
+WP[45] (256,72,256) advisedY=72 type=TERRAIN_FOLLOW
+== PLANNED PATH ==
+valid=true finalPos=(256,72,0) finalDir=EAST invalidCode=null invalidReason=null
+== PATH SEGMENTS (7) ==
+SEG[0] BezierSegment type=BEZIER start=(0,72,0) startDir=EAST end=(40,72,0) endDir=EAST | Bezier[BlockPos{x=0, y=72, z=0} -> BlockPos{x=40, y=72, z=0}, elevation=+0]
+SEG[1] BezierSegment type=BEZIER start=(40,72,0) startDir=EAST end=(85,72,0) endDir=EAST | Bezier[BlockPos{x=40, y=72, z=0} -> BlockPos{x=85, y=72, z=0}, elevation=+0]
+SEG[2] BezierSegment type=BEZIER start=(85,72,0) startDir=EAST end=(125,72,0) endDir=EAST | Bezier[BlockPos{x=85, y=72, z=0} -> BlockPos{x=125, y=72, z=0}, elevation=+0]
+SEG[3] BezierSegment type=BEZIER start=(125,72,0) startDir=EAST end=(165,72,0) endDir=EAST | Bezier[BlockPos{x=125, y=72, z=0} -> BlockPos{x=165, y=72, z=0}, elevation=+0]
+SEG[4] BezierSegment type=BEZIER start=(165,72,0) startDir=EAST end=(210,72,0) endDir=EAST | Bezier[BlockPos{x=165, y=72, z=0} -> BlockPos{x=210, y=72, z=0}, elevation=+0]
+SEG[5] BezierSegment type=BEZIER start=(210,72,0) startDir=EAST end=(250,72,0) endDir=EAST | Bezier[BlockPos{x=210, y=72, z=0} -> BlockPos{x=250, y=72, z=0}, elevation=+0]
+SEG[6] BezierSegment type=BEZIER start=(250,72,0) startDir=EAST end=(256,72,0) endDir=EAST | Bezier[BlockPos{x=250, y=72, z=0} -> BlockPos{x=256, y=72, z=0}, elevation=+0]
+== SELECTED ALTERNATIVE ==
+none
